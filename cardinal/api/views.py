@@ -5,12 +5,14 @@ from rest_framework import status
 from cardinal.api import cardinal_data_request
 from .generate_test_data import DataGenerator
 from .logger import request_logged
+from rest_framework import permissions
 
 
 CARDINAL_EMOJI = "🐦"
 
 
 class InitialApiView(APIView):
+    permission_classes = [permissions.AllowAny]
     @request_logged
     def get(self, request, *args, **kwargs):
         """Return a cardinal"""
@@ -18,6 +20,7 @@ class InitialApiView(APIView):
 
 
 class CollectionDataRequestApiView(APIView):
+    permission_classes = [permissions.AllowAny]
     @request_logged
     def get(self, request, *args, **kwargs):
         collection_name = kwargs["collection_name"]
@@ -28,12 +31,14 @@ class CollectionDataRequestApiView(APIView):
 
 
 class SupportedCollectionsApiView(APIView):
+    permission_classes = [permissions.AllowAny]
     @request_logged
     def get(self, request, *args, **kwargs):
         return Response(cardinal_data_request.COLLECTIONS, status=status.HTTP_200_OK)
 
 
 class TestDataGeneratorApiView(APIView):
+    permission_classes = [permissions.AllowAny]
     @request_logged
     def get(self, request, *args, **kwargs):
 
@@ -51,6 +56,7 @@ class TestDataGeneratorApiView(APIView):
 
 
 class MatchScheduleApiView(APIView):
+    permission_classes = [permissions.AllowAny]
     @request_logged
     def get(self, request, *args, **kwargs):
         comp_code = kwargs["comp_code"]
@@ -60,6 +66,7 @@ class MatchScheduleApiView(APIView):
 
 
 class TeamsListApiView(APIView):
+    permission_classes = [permissions.AllowAny]
     @request_logged
     def get(self, request, *args, **kwargs):
         comp_code = kwargs["comp_code"]
