@@ -27,6 +27,6 @@ jobs:
         pip install -r requirements.txt
     - name: Run Tests
       env:
-        DJANGO_SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        DJANGO_SECRET_KEY: this_is_a_key_running_in_a_test_8485
       run: |
         python manage.py test

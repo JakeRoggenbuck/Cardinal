@@ -1,0 +1,106 @@
+[{
+    "_id": {
+      "$oid": "60a346e72eaffeba84e3918f"
+    },
+    "auto_balls_high": 67,
+    "auto_balls_low": 31,
+    "climb_time": 8,
+    "confidence_rating": 86,
+    "control_panel_position": false,
+    "control_panel_rotation": true,
+    "incap": 8,
+    "match_number": 8,
+    "team_number": 691,
+    "tele_balls_high": 97,
+    "tele_balls_low": 11
+  },{
+    "_id": {
+      "$oid": "60a4666e8cc1ef40ea77462f"
+    },
+    "auto_balls_high": 59,
+    "auto_balls_low": 31,
+    "climb_time": 8,
+    "confidence_rating": 86,
+    "control_panel_position": false,
+    "control_panel_rotation": true,
+    "incap": 8,
+    "match_number": 1,
+    "team_number": 867,
+    "tele_balls_high": 97,
+    "tele_balls_low": 11
+  },{
+    "_id": {
+      "$oid": "60a466c08cc1ef40ea774630"
+    },
+    "auto_balls_high": 59,
+    "auto_balls_low": 31,
+    "climb_time": 8,
+    "confidence_rating": 86,
+    "control_panel_position": false,
+    "control_panel_rotation": true,
+    "incap": 8,
+    "match_number": 1,
+    "team_number": 1661,
+    "tele_balls_high": 97,
+    "tele_balls_low": 11
+  },{
+    "_id": {
+      "$oid": "60a466e58cc1ef40ea774631"
+    },
+    "auto_balls_high": 59,
+    "auto_balls_low": 31,
+    "climb_time": 8,
+    "confidence_rating": 86,
+    "control_panel_position": false,
+    "control_panel_rotation": true,
+    "incap": 8,
+    "match_number": 1,
+    "team_number": 7415,
+    "tele_balls_high": 97,
+    "tele_balls_low": 11
+  },{
+    "_id": {
+      "$oid": "60a466f68cc1ef40ea774632"
+    },
+    "auto_balls_high": 59,
+    "auto_balls_low": 31,
+    "climb_time": 8,
+    "confidence_rating": 86,
+    "control_panel_position": false,
+    "control_panel_rotation": true,
+    "incap": 8,
+    "match_number": 1,
+    "team_number": 6814,
+    "tele_balls_high": 97,
+    "tele_balls_low": 11
+  },{
+    "_id": {
+      "$oid": "60a467078cc1ef40ea774633"
+    },
+    "auto_balls_high": 59,
+    "auto_balls_low": 31,
+    "climb_time": 8,
+    "confidence_rating": 86,
+    "control_panel_position": false,
+    "control_panel_rotation": true,
+    "incap": 8,
+    "match_number": 1,
+    "team_number": 114,
+    "tele_balls_high": 97,
+    "tele_balls_low": 11
+  },{
+    "_id": {
+      "$oid": "60a467608cc1ef40ea774634"
+    },
+    "auto_balls_high": 59,
+    "auto_balls_low": 31,
+    "climb_time": 8,
+    "confidence_rating": 86,
+    "control_panel_position": false,
+    "control_panel_rotation": true,
+    "incap": 8,
+    "match_number": 1,
+    "team_number": 5089,
+    "tele_balls_high": 97,
+    "tele_balls_low": 11
+  }]

@@ -6,6 +6,7 @@ from cardinal.api import cardinal_data_request
 from .generate_test_data import DataGenerator
 from .logger import request_logged
 from rest_framework import permissions
+from pathlib import Path
 
 
 CARDINAL_EMOJI = "🐦"
@@ -27,6 +28,18 @@ class CollectionDataRequestApiView(APIView):
 
         # Returns all the database documents that have not been sent
         data = cardinal_data_request.get_unsent_docs(collection_name)
+
+        # If test requested, overwrite test data
+        if "test" in request.query_params:
+            try:
+                file = open(f"cardinal/api/hardcoded_test_data/{collection_name}.json")
+                data = file.read()
+                file.close()
+            except FileNotFoundError:
+                return Response(
+                    f'Test {collection_name} data not found.', status=status.HTTP_404_NOT_FOUND
+                )
+
         return Response(data, status=status.HTTP_200_OK)
 
 
@@ -52,7 +65,10 @@ class TestDataGeneratorApiView(APIView):
         else:
             count = 1
 
-        return Response(generate_test_data.get_data(count), status=status.HTTP_200_OK)
+        if Path(f"schema/{filename}").exists():
+            return Response(generate_test_data.get_data(count), status=status.HTTP_200_OK)
+        else:
+            return Response(f"The schema file {filename} doesn't exist.", status=status.HTTP_200_OK)
 
 
 class MatchScheduleApiView(APIView):
