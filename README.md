@@ -55,15 +55,15 @@ There are two main uses for Cardinal. Both involve serving data to the Viewer ap
 ## Test Data Generator
 ```
 # Format
-curl -X GET "http://cardinal.citruscircuits.org/cardinal/api/generate/<schema_name>/?format=json" \
+curl -X GET "https://cardinal.citruscircuits.org/cardinal/api/generate/<schema_name>/?format=json"
 ```
 ```
 # Example
-curl -X GET "http://cardinal.citruscircuits.org/cardinal/api/generate/calc_tba_team_schema/?format=json" \
+curl -X GET "https://cardinal.citruscircuits.org/cardinal/api/generate/calc_tba_team_schema/?format=json"
 ```
 ```
 # Example with count
-curl -X GET "http://cardinal.citruscircuits.org/cardinal/api/generate/calc_tba_team_schema/?format=json&count=10" \
+curl -X GET "https://cardinal.citruscircuits.org/cardinal/api/generate/calc_tba_team_schema/?format=json&count=10"
 ```
 
 #### Output
