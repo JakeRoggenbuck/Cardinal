@@ -71,13 +71,9 @@ class TestDataGeneratorApiView(APIView):
             count = 1
 
         if Path(f"schema/{filename}").exists():
-            return Response(
-                generate_test_data.get_data(count), status=status.HTTP_200_OK
-            )
+            return Response(generate_test_data.get_data(count), status=status.HTTP_200_OK)
         else:
-            return Response(
-                f"The schema file {filename} doesn't exist.", status=status.HTTP_200_OK
-            )
+            return Response(f"The schema file {filename} doesn't exist.", status=status.HTTP_200_OK)
 
 
 class MatchScheduleApiView(APIView):
