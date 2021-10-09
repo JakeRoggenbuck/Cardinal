@@ -14,7 +14,7 @@ CARDINAL_EMOJI = "🐦"
 
 class InitialApiView(APIView):
     permission_classes = [permissions.AllowAny]
-    
+
     @request_logged
     def get(self, request, *args, **kwargs):
         """Return a cardinal"""
@@ -23,7 +23,7 @@ class InitialApiView(APIView):
 
 class CollectionDataRequestApiView(APIView):
     permission_classes = [permissions.AllowAny]
-    
+
     @request_logged
     def get(self, request, *args, **kwargs):
         collection_name = kwargs["collection_name"]
@@ -39,7 +39,8 @@ class CollectionDataRequestApiView(APIView):
                 file.close()
             except FileNotFoundError:
                 return Response(
-                    f'Test {collection_name} data not found.', status=status.HTTP_404_NOT_FOUND
+                    f"Test {collection_name} data not found.",
+                    status=status.HTTP_404_NOT_FOUND,
                 )
 
         return Response(data, status=status.HTTP_200_OK)
@@ -47,7 +48,7 @@ class CollectionDataRequestApiView(APIView):
 
 class SupportedCollectionsApiView(APIView):
     permission_classes = [permissions.AllowAny]
-    
+
     @request_logged
     def get(self, request, *args, **kwargs):
         return Response(cardinal_data_request.COLLECTIONS, status=status.HTTP_200_OK)
@@ -55,7 +56,7 @@ class SupportedCollectionsApiView(APIView):
 
 class TestDataGeneratorApiView(APIView):
     permission_classes = [permissions.AllowAny]
-    
+
     @request_logged
     def get(self, request, *args, **kwargs):
 
@@ -70,14 +71,18 @@ class TestDataGeneratorApiView(APIView):
             count = 1
 
         if Path(f"schema/{filename}").exists():
-            return Response(generate_test_data.get_data(count), status=status.HTTP_200_OK)
+            return Response(
+                generate_test_data.get_data(count), status=status.HTTP_200_OK
+            )
         else:
-            return Response(f"The schema file {filename} doesn't exist.", status=status.HTTP_200_OK)
+            return Response(
+                f"The schema file {filename} doesn't exist.", status=status.HTTP_200_OK
+            )
 
 
 class MatchScheduleApiView(APIView):
     permission_classes = [permissions.AllowAny]
-    
+
     @request_logged
     def get(self, request, *args, **kwargs):
         comp_code = kwargs["comp_code"]
@@ -88,6 +93,7 @@ class MatchScheduleApiView(APIView):
 
 class TeamsListApiView(APIView):
     permission_classes = [permissions.AllowAny]
+
     @request_logged
     def get(self, request, *args, **kwargs):
         comp_code = kwargs["comp_code"]
