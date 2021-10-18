@@ -2,6 +2,8 @@
 
 from datetime import datetime
 from os import path
+from enum import Enum
+from termcolor import colored
 
 _FILE_PATH = "request_log.txt"
 
@@ -36,10 +38,13 @@ def logger(cself, request, fn, *args, **kwargs):
     # (classname).get -> ['classname', 'get'] -> 'classname'
     calling_class = name.split(".")[0]
     args_string = (
-        "\n".join(("\t" + str(arg)) for arg in args) + "\n" if len(args) != 0 else "[no arguments]"
+        "\n".join(("\t" + str(arg)) for arg in args) + "\n"
+        if len(args) != 0
+        else "[no arguments]"
     )
     kwargs_string = (
-        "\n".join(("\t" + f"{arg} : '{str(kwargs[arg])}'") for arg in kwargs.keys()) + "\n"
+        "\n".join(("\t" + f"{arg} : '{str(kwargs[arg])}'") for arg in kwargs.keys())
+        + "\n"
         if len(kwargs.keys()) != 0
         else "[no arguments]"
     )
@@ -55,3 +60,37 @@ Query params:
 """
     )
     log_file.close()
+
+
+class Severity(Enum):
+    INFO = 0
+    WARN = 1
+    ERROR = 2
+    DEBUG = 3
+    FATAL = 4
+    RAW = 5
+
+
+def log(message: str, severity: Severity):
+    # Print only the raw message
+    if severity == Severity.RAW:
+        print(message)
+        return
+
+    message_type = f"{severity.name}"
+
+    if severity == Severity.WARN:
+        message_type = colored(message_type, "yellow")
+    elif severity == Severity.ERROR:
+        message_type = colored(message_type, "red")
+    elif severity == Severity.FATAL:
+        message_type = colored(message_type, "red")
+    elif severity == Severity.INFO:
+        message_type = colored(message_type.lower(), "blue")
+
+    message = f"{message_type}: {message}"
+    print(message)
+
+    # Quit the program if the severity is fatal
+    if severity == Severity.FATAL:
+        exit(-1)
