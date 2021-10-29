@@ -38,10 +38,13 @@ def logger(cself, request, fn, *args, **kwargs):
     # (classname).get -> ['classname', 'get'] -> 'classname'
     calling_class = name.split(".")[0]
     args_string = (
-        "\n".join(("\t" + str(arg)) for arg in args) + "\n" if len(args) != 0 else "[no arguments]"
+        "\n".join(("\t" + str(arg)) for arg in args) + "\n"
+        if len(args) != 0
+        else "[no arguments]"
     )
     kwargs_string = (
-        "\n".join(("\t" + f"{arg} : '{str(kwargs[arg])}'") for arg in kwargs.keys()) + "\n"
+        "\n".join(("\t" + f"{arg} : '{str(kwargs[arg])}'") for arg in kwargs.keys())
+        + "\n"
         if len(kwargs.keys()) != 0
         else "[no arguments]"
     )
@@ -68,6 +71,11 @@ class Severity(Enum):
     RAW = 5
 
 
+def write_log(message: str):
+    with open(_FILE_PATH, "a") as log_file:
+        log_file.write(message)
+
+
 def log(message: str, severity: Severity):
     # Print only the raw message
     if severity == Severity.RAW:
@@ -86,6 +94,7 @@ def log(message: str, severity: Severity):
         message_type = colored(message_type.lower(), "blue")
 
     message = f"{message_type}: {message}"
+    write_log(message)
     print(message)
 
     # Quit the program if the severity is fatal
