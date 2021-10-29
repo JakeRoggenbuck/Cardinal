@@ -59,7 +59,7 @@ To get a list of supported collections, look at /api/supported-collections/"
 
     return serialize_documents(DB[collection_name].find())
 
-      
+
 def get_match_schedule(comp_code: str):
     with open("cardinal/api/hardcoded_test_data/match_schedule.json") as file:
         return json.load(file)
